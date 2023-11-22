@@ -22,11 +22,6 @@ repos:
         - -d duplicate-code
         - --disable=import-error
 
--   repo: https://github.com/pre-commit/mirrors-eslint
-    rev: ''
-    hooks:
-    -   id: eslint
-
 - repo: https://github.com/thibaudcolas/curlylint
   rev: "" # select a tag / sha to point at
   hooks:
