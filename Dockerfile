@@ -8,11 +8,11 @@ COPY requirements.txt /app/
 RUN python -m pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the app itself
-COPY django_svelte_demo /app/src
+COPY backend /app/src
 WORKDIR /app/src
 
 # Get the frontend component staticfiles
-COPY svelte/public/build /app/svelte/public/build
+COPY frontend/public/build /app/frontend/public/build
 
 # Catalog the staticfiles. This is needed in production, but in the dev
 #  environment the svelte staticfiles will be drawn from
@@ -20,7 +20,7 @@ COPY svelte/public/build /app/svelte/public/build
 RUN python manage.py collectstatic --noinput
 
 # Delete the original staticfiles
-RUN rm -rf /app/svelte
+RUN rm -rf /app/frontend
 
 # get the runtime instructions
 COPY entrypoint.sh /app
@@ -28,5 +28,5 @@ RUN chmod +x /app/entrypoint.sh
 
 # set the runtime user
 # USER worker
-EXPOSE 8000
+EXPOSE 8080
 ENTRYPOINT ["sh", "/app/entrypoint.sh"]
