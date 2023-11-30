@@ -2,7 +2,6 @@
 from django.db import models
 
 
-
 # Create your models here.
 class User(models.Model):
     """User class to model a potential user of the spam_filtering_analysis application"""
