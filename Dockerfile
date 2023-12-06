@@ -1,10 +1,11 @@
 FROM python:3.11.3
 
-COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . code
 WORKDIR /code
+COPY . /code
+COPY requirements.txt requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt
 
 ARG AUTH_TOKEN
 ENV AUTH_TOKEN=${AUTH_TOKEN}
