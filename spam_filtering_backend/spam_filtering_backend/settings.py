@@ -132,6 +132,8 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 
+ALLOWED_HOSTS = ["0.0.0.0", "localhost"]
+
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
