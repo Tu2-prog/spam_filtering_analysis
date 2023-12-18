@@ -30,12 +30,10 @@ def classify(request):
         count_vectorizer = joblib.load(
             "spam_filtering_backend/data/count_vectorizer.joblib"
         )
-        print(request.body)
         data = json.loads(request.body.decode("utf-8"))
         input_array = []
         input_array.append(data.get("text", ""))
         input_features = count_vectorizer.transform(input_array)
         prediction = model.predict(input_features)
-        print(prediction)
         return JsonResponse({"prediction": int(prediction[0])})
     return JsonResponse({"error": "Invalid request method"}, status=405)
