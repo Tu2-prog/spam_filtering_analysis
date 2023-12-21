@@ -32,7 +32,7 @@ def classify(request):
         )
         data = json.loads(request.body.decode("utf-8"))
         input_array = []
-        input_array.append(data.get("text", ""))
+        input_array.append(data.get("content", ""))
         input_features = count_vectorizer.transform(input_array)
         prediction = model.predict(input_features)
         return JsonResponse({"prediction": int(prediction[0])})
