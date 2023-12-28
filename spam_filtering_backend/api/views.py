@@ -62,5 +62,5 @@ def classify(request):
             parameters_spam, parameters_ham, p_spam, p_ham
         )
         prediction = naive_bayes_classifier.classify(input_prompt)
-        return JsonResponse({"prediction": prediction})
+        return JsonResponse({"prediction": int(prediction)})
     return JsonResponse({"error": "Invalid request method"}, status=405)
