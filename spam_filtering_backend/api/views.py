@@ -9,7 +9,10 @@ from api.classifier import NaiveBayesClassifier
 
 @csrf_exempt
 def authenticate(request):
-    """Authentification view to validate a token from the frontend."""
+    """Authentification view to validate a token from the frontend.
+    :param request: A request object containing neccessary data for the authentification.
+    :return A Response object that returns the result of the authentication in the JSON format.
+    """
 
     if request.method == "POST":
         try:
@@ -25,7 +28,10 @@ def authenticate(request):
 
 @csrf_exempt
 def classify(request):
-    """Classify view for classifying e-mail texts with a count vectorizer."""
+    """Classify view for classifying e-mail texts with a count vectorizer.
+    :param request: A http request containing the neccessary data to do the computations.
+    :return: A Response object that returns the result of the classification in the JSON format.
+    """
     if request.method == "POST":
         model = joblib.load("spam_filtering_backend/data/spam_classifier_model.joblib")
         count_vectorizer = joblib.load(
